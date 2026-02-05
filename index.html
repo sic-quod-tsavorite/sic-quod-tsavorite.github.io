@@ -2,9 +2,41 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>temp-scaffold</title>
+
+    <title>sic-quod-tsavorite | Developer Portfolio</title>
+    <meta
+      name="description"
+      content="Martin's developer portfolio - building beautiful, performant web experiences from frontend to backend."
+    />
+    <meta name="theme-color" content="#1a2e20" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="sic-quod-tsavorite | Developer Portfolio" />
+    <meta
+      property="og:description"
+      content="Martin's developer portfolio - building beautiful, performant web experiences from frontend to backend."
+    />
+    <meta property="og:url" content="https://sic-quod-tsavorite.github.io/" />
+    <meta property="og:site_name" content="sic-quod-tsavorite" />
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="sic-quod-tsavorite | Developer Portfolio" />
+    <meta
+      name="twitter:description"
+      content="Martin's developer portfolio - building beautiful, performant web experiences from frontend to backend."
+    />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <script>
+      ;(function () {
+        var t = localStorage.getItem('theme')
+        if (t === 'dark' || (!t && !window.matchMedia('(prefers-color-scheme: light)').matches))
+          document.documentElement.classList.add('dark')
+      })()
+    </script>
   </head>
   <body>
     <div id="root"></div>
