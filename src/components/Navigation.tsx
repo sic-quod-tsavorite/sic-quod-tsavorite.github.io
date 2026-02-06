@@ -49,7 +49,7 @@ export function Navigation() {
             )}
           </AnimatePresence>
           <span className="from-primary via-secondary to-primary bg-linear-to-r bg-size-[200%_auto] bg-clip-text text-transparent transition-[background-position] duration-300 group-hover/logo:bg-position-[100%_center]">
-            sic-quod-tsavorite
+            Martin
           </span>
         </button>
 
