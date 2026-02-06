@@ -5,10 +5,9 @@ import { Button } from '@/components/ui/button'
 import { useScrollSection } from '@/hooks/useScrollSection'
 import profilePhoto from '@/assets/profile.jpg'
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
+const slideUp = {
+  hidden: { y: 40 },
   visible: (i: number) => ({
-    opacity: 1,
     y: 0,
     transition: { delay: i * 0.15, duration: 0.7, ease: 'easeOut' as const },
   }),
@@ -42,7 +41,7 @@ export function Hero() {
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
           custom={0}
-          variants={fadeUp}
+          variants={slideUp}
           initial="hidden"
           animate={controls}
           className="mb-6 flex justify-center"
@@ -56,7 +55,7 @@ export function Hero() {
 
         <motion.p
           custom={1}
-          variants={fadeUp}
+          variants={slideUp}
           initial="hidden"
           animate={controls}
           className="text-primary mb-4 text-sm font-medium tracking-widest uppercase"
@@ -66,7 +65,7 @@ export function Hero() {
 
         <motion.h1
           custom={2}
-          variants={fadeUp}
+          variants={slideUp}
           initial="hidden"
           animate={controls}
           className="mb-6 text-5xl leading-tight font-bold md:text-7xl"
@@ -79,7 +78,7 @@ export function Hero() {
 
         <motion.p
           custom={3}
-          variants={fadeUp}
+          variants={slideUp}
           initial="hidden"
           animate={controls}
           className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg md:text-xl"
@@ -90,7 +89,7 @@ export function Hero() {
 
         <motion.div
           custom={4}
-          variants={fadeUp}
+          variants={slideUp}
           initial="hidden"
           animate={controls}
           className="flex flex-wrap items-center justify-center gap-4"
