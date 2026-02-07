@@ -90,7 +90,7 @@ function LightboxContent({
         variant="ghost"
         size="icon"
         onClick={onClose}
-        className="absolute top-4 right-4 z-10 text-white/70 hover:bg-white/10 hover:text-white"
+        className="absolute top-4 right-4 z-10 cursor-pointer text-white/70 hover:bg-white/10 hover:text-white"
       >
         <X className="size-5" />
         <span className="sr-only">Close</span>
@@ -123,7 +123,7 @@ function LightboxContent({
               variant="ghost"
               size="icon"
               onClick={goToPrevious}
-              className="absolute top-1/2 left-4 -translate-y-1/2 border border-white/10 bg-black/40 text-white/70 backdrop-blur-sm hover:bg-black/60 hover:text-white"
+              className="absolute top-1/2 left-4 -translate-y-1/2 cursor-pointer border border-white/10 bg-black/40 text-white/70 backdrop-blur-sm hover:bg-black/60 hover:text-white"
             >
               <ChevronLeft className="size-6" />
               <span className="sr-only">Previous image</span>
@@ -132,7 +132,7 @@ function LightboxContent({
               variant="ghost"
               size="icon"
               onClick={goToNext}
-              className="absolute top-1/2 right-4 -translate-y-1/2 border border-white/10 bg-black/40 text-white/70 backdrop-blur-sm hover:bg-black/60 hover:text-white"
+              className="absolute top-1/2 right-4 -translate-y-1/2 cursor-pointer border border-white/10 bg-black/40 text-white/70 backdrop-blur-sm hover:bg-black/60 hover:text-white"
             >
               <ChevronRight className="size-6" />
               <span className="sr-only">Next image</span>
@@ -150,8 +150,10 @@ function LightboxContent({
               onClick={() => goToIndex(index)}
               aria-label={`Go to image ${index + 1}`}
               className={cn(
-                'size-2 rounded-full transition-all',
-                index === currentIndex ? 'w-4 bg-white' : 'bg-white/40 hover:bg-white/60'
+                'size-2 cursor-pointer rounded-full transition-all',
+                index === currentIndex
+                  ? 'pointer-events-none w-4 bg-white'
+                  : 'bg-white/40 hover:bg-white/60'
               )}
             />
           ))}
