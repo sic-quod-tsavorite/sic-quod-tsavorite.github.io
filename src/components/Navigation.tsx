@@ -1,18 +1,27 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Moon, Sun, X } from 'lucide-react'
-import { NAV_ITEMS } from '@/lib/constants'
 import { useScrollSection } from '@/hooks/useScrollSection'
 import { useActiveSection } from '@/hooks/useActiveSection'
 import { useTheme } from '@/hooks/useTheme'
+import { useTranslation } from '@/hooks/useLanguage'
+import { LanguageToggle } from '@/components/shared/LanguageToggle'
 import { cn } from '@/lib/utils'
 import profilePhoto from '@/assets/profile.jpg'
+
+const NAV_ITEMS = [
+  { id: 'about', href: '#about' },
+  { id: 'projects', href: '#projects' },
+  { id: 'skills', href: '#skills' },
+  { id: 'contact', href: '#contact' },
+] as const
 
 export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { scrollTo } = useScrollSection()
   const activeSection = useActiveSection()
   const { theme, toggleTheme } = useTheme()
+  const t = useTranslation()
 
   const handleClick = (href: string) => {
     const id = href.replace('#', '')
@@ -56,7 +65,8 @@ export function Navigation() {
         {/* Desktop nav */}
         <ul className="hidden gap-8 md:flex">
           {NAV_ITEMS.map((item) => {
-            const isActive = activeSection === item.href.replace('#', '')
+            const isActive = activeSection === item.id
+            const label = t.nav[item.id as keyof typeof t.nav]
             return (
               <li key={item.href} className="relative">
                 <button
@@ -66,7 +76,7 @@ export function Navigation() {
                     isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                   )}
                 >
-                  {item.label}
+                  {label}
                 </button>
                 {isActive && (
                   <motion.div
@@ -81,6 +91,9 @@ export function Navigation() {
         </ul>
 
         <div className="flex items-center gap-2">
+          {/* Language toggle */}
+          <LanguageToggle />
+
           {/* Theme toggle */}
           <button
             onClick={toggleTheme}
@@ -134,7 +147,8 @@ export function Navigation() {
             className="bg-background/95 overflow-hidden border-t border-black/10 backdrop-blur-lg md:hidden dark:border-white/10"
           >
             {NAV_ITEMS.map((item) => {
-              const isActive = activeSection === item.href.replace('#', '')
+              const isActive = activeSection === item.id
+              const label = t.nav[item.id as keyof typeof t.nav]
               return (
                 <li key={item.href}>
                   <button
@@ -146,7 +160,7 @@ export function Navigation() {
                         : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
-                    {item.label}
+                    {label}
                   </button>
                 </li>
               )
