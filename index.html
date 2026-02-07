@@ -35,6 +35,13 @@
         var t = localStorage.getItem('theme')
         if (t === 'dark' || (!t && !window.matchMedia('(prefers-color-scheme: light)').matches))
           document.documentElement.classList.add('dark')
+
+        var lang = localStorage.getItem('language')
+        if (lang === 'da' || lang === 'en') {
+          document.documentElement.lang = lang
+        } else if (navigator.language.startsWith('da')) {
+          document.documentElement.lang = 'da'
+        }
       })()
     </script>
   </head>
