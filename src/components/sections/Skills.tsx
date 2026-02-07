@@ -2,15 +2,16 @@ import { motion } from 'framer-motion'
 import { SectionWrapper } from '@/components/shared/SectionWrapper'
 import { scaleIn } from '@/lib/variants'
 import { GlassCard } from '@/components/shared/GlassCard'
+import { useTranslation } from '@/hooks/useLanguage'
 
 interface SkillCategory {
-  title: string
+  key: 'frontend' | 'backendData' | 'devopsInfra' | 'toolsOther'
   skills: string[]
 }
 
 const skillCategories: SkillCategory[] = [
   {
-    title: 'Frontend',
+    key: 'frontend',
     skills: [
       'Vue',
       'React',
@@ -22,11 +23,11 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: 'Backend & Data',
+    key: 'backendData',
     skills: ['Node.js', 'Express', 'PHP', 'C#', 'Python', 'Laravel', 'MongoDB', 'MySQL'],
   },
   {
-    title: 'DevOps & Infra',
+    key: 'devopsInfra',
     skills: [
       'CI/CD',
       'Docker',
@@ -38,7 +39,7 @@ const skillCategories: SkillCategory[] = [
     ],
   },
   {
-    title: 'Tools & Other',
+    key: 'toolsOther',
     skills: ['Git', 'Docker', 'Linux', 'Vite', 'Unity', 'WordPress', 'Expo'],
   },
 ]
@@ -52,17 +53,19 @@ const skillItemVariants = {
 }
 
 export function Skills() {
+  const t = useTranslation()
+
   return (
-    <SectionWrapper id="skills" title="Skills" subtitle="Technologies and tools I work with.">
+    <SectionWrapper id="skills" title={t.skills.title} subtitle={t.skills.subtitle}>
       <motion.div
         className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4"
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
       >
         {skillCategories.map((category) => (
-          <motion.div key={category.title} variants={scaleIn}>
+          <motion.div key={category.key} variants={scaleIn}>
             <GlassCard className="h-full">
               <h3 className="text-primary mb-4 text-sm font-semibold tracking-widest uppercase">
-                {category.title}
+                {t.skills.categories[category.key]}
               </h3>
               <motion.ul
                 className="space-y-2"

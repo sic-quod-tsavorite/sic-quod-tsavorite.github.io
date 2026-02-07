@@ -4,16 +4,15 @@ import { SectionWrapper } from '@/components/shared/SectionWrapper'
 import { scaleIn } from '@/lib/variants'
 import { GlassCard } from '@/components/shared/GlassCard'
 import { SOCIAL_LINKS } from '@/lib/constants'
+import { useTranslation } from '@/hooks/useLanguage'
 
 const iconMap = { Github, Mail, Linkedin } as const
 
 export function Contact() {
+  const t = useTranslation()
+
   return (
-    <SectionWrapper
-      id="contact"
-      title="Get in Touch"
-      subtitle="Have a question or want to work together? Reach out through any of these channels."
-    >
+    <SectionWrapper id="contact" title={t.contact.title} subtitle={t.contact.subtitle}>
       <motion.div
         className="flex flex-wrap items-center justify-center gap-4"
         variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
