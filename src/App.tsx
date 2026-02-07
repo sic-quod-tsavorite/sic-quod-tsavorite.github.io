@@ -1,6 +1,7 @@
 import { Github, Linkedin, Mail } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { ParallaxBackground } from '@/components/shared/ParallaxBackground'
+import { TechMarquee } from '@/components/shared/TechMarquee'
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
@@ -22,8 +23,9 @@ function App() {
         <Skills />
         <Contact />
       </main>
-      <footer className="border-t border-black/10 py-8 dark:border-white/10">
-        <div className="flex items-center justify-center gap-6">
+      <footer className="border-t border-black/10 dark:border-white/10">
+        <TechMarquee />
+        <div className="flex items-center justify-center gap-6 pb-8">
           {SOCIAL_LINKS.map((link) => {
             const Icon = iconMap[link.icon]
             return (
