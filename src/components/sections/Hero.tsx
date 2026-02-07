@@ -3,6 +3,7 @@ import { motion, useAnimationControls } from 'framer-motion'
 import { ArrowDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useScrollSection } from '@/hooks/useScrollSection'
+import { useTranslation } from '@/hooks/useLanguage'
 import profilePhoto from '@/assets/profile.jpg'
 
 const slideUp = {
@@ -16,6 +17,7 @@ const slideUp = {
 export function Hero() {
   const { scrollTo } = useScrollSection()
   const controls = useAnimationControls()
+  const t = useTranslation()
 
   useEffect(() => {
     controls.set('hidden')
@@ -27,16 +29,81 @@ export function Hero() {
       id="hero"
       className="relative flex min-h-screen items-center justify-center overflow-hidden px-6"
     >
-      {/* Background mesh gradient */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          background: [
-            'radial-gradient(at 40% 20%, oklch(0.82 0.17 155 / 0.15) 0px, transparent 50%)',
-            'radial-gradient(at 80% 80%, oklch(0.45 0.28 290 / 0.1) 0px, transparent 50%)',
-          ].join(', '),
-        }}
-      />
+      {/* Animated background orbs */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Large green orb - top left */}
+        <motion.div
+          className="absolute h-175 w-175 rounded-full blur-[120px]"
+          style={{
+            background: 'oklch(0.82 0.17 155 / 0.12)',
+            left: '-5%',
+            top: '-10%',
+          }}
+          animate={{
+            x: [0, 60, -40, 20, 0],
+            y: [0, -40, 30, -20, 0],
+          }}
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        {/* Purple orb - bottom right */}
+        <motion.div
+          className="absolute h-150 w-150 rounded-full blur-[100px]"
+          style={{
+            background: 'oklch(0.45 0.28 290 / 0.08)',
+            right: '-10%',
+            bottom: '-5%',
+          }}
+          animate={{
+            x: [0, -50, 35, -25, 0],
+            y: [0, 45, -35, 20, 0],
+          }}
+          transition={{
+            duration: 30,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        {/* Small accent orb - center right */}
+        <motion.div
+          className="absolute h-100 w-100 rounded-full blur-[80px]"
+          style={{
+            background: 'oklch(0.7 0.15 200 / 0.08)',
+            right: '15%',
+            top: '20%',
+          }}
+          animate={{
+            x: [0, -35, 45, -20, 0],
+            y: [0, 50, -30, 40, 0],
+          }}
+          transition={{
+            duration: 22,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+        {/* Subtle warm orb - bottom left */}
+        <motion.div
+          className="absolute h-125 w-125 rounded-full blur-[100px]"
+          style={{
+            background: 'oklch(0.75 0.12 80 / 0.06)',
+            left: '10%',
+            bottom: '5%',
+          }}
+          animate={{
+            x: [0, 40, -30, 50, 0],
+            y: [0, -35, 25, -45, 0],
+          }}
+          transition={{
+            duration: 28,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-4xl text-center">
         <motion.div
@@ -60,7 +127,7 @@ export function Hero() {
           animate={controls}
           className="text-primary mb-4 text-sm font-medium tracking-widest uppercase"
         >
-          Welcome to my portfolio
+          {t.hero.welcome}
         </motion.p>
 
         <motion.h1
@@ -70,7 +137,7 @@ export function Hero() {
           animate={controls}
           className="mb-6 text-5xl leading-tight font-bold md:text-7xl"
         >
-          Hi, I'm{' '}
+          {t.hero.heading}{' '}
           <span className="from-primary to-secondary bg-linear-to-r bg-clip-text text-transparent">
             Martin
           </span>
@@ -83,8 +150,7 @@ export function Hero() {
           animate={controls}
           className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg md:text-xl"
         >
-          Full-Stack Developer. I like building things, breaking things, and figuring out how
-          everything in between works.
+          {t.hero.tagline}
         </motion.p>
 
         <motion.div
@@ -99,7 +165,7 @@ export function Hero() {
             onClick={() => scrollTo('projects')}
             className="from-primary via-secondary to-primary text-primary-foreground hover:shadow-primary/25 cursor-pointer bg-linear-to-r bg-size-[200%_auto] transition-[background-position,box-shadow] duration-300 hover:bg-position-[100%_center] hover:shadow-lg"
           >
-            View Projects
+            {t.hero.viewProjects}
           </Button>
           <Button
             size="lg"
@@ -107,7 +173,7 @@ export function Hero() {
             asChild
             className="cursor-pointer border-black/20 bg-black/5 backdrop-blur-sm hover:bg-black/10 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10"
           >
-            <a href="mailto:tsav.git@pm.me">Get in Touch</a>
+            <a href="mailto:tsav.git@pm.me">{t.hero.getInTouch}</a>
           </Button>
         </motion.div>
       </div>
