@@ -66,30 +66,31 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
               const translatedLabel =
                 t.projectCard[labelKeyMap[link.label] as keyof typeof t.projectCard] ?? link.label
               return (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1.5 transition-colors"
-                  aria-label={`${title} ${translatedLabel}`}
-                >
-                  <Github size={16} />
-                  <span className="text-xs">{translatedLabel}</span>
-                </a>
+                <Button key={link.label} variant="ghost" size="xs" asChild>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`${title} ${translatedLabel}`}
+                  >
+                    <Github size={16} />
+                    <span className="text-xs">{translatedLabel}</span>
+                  </a>
+                </Button>
               )
             })}
             {project.live && (
-              <a
-                href={project.live}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-foreground flex cursor-pointer items-center gap-1.5 transition-colors"
-                aria-label={`${title} ${t.projectCard.live}`}
-              >
-                <ExternalLink size={16} />
-                <span className="text-xs">{t.projectCard.live}</span>
-              </a>
+              <Button variant="ghost" size="xs" asChild>
+                <a
+                  href={project.live}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${title} ${t.projectCard.live}`}
+                >
+                  <ExternalLink size={16} />
+                  <span className="text-xs">{t.projectCard.live}</span>
+                </a>
+              </Button>
             )}
             {project.previewImages && project.previewImages.length > 0 && (
               <Button
