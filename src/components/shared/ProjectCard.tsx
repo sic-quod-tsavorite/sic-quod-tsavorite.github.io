@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge'
 import { Button } from '@/components/ui/button'
 import { ImageLightbox } from '@/components/shared/ImageLightbox'
 import { useTranslation } from '@/hooks/useLanguage'
+import { AnimatedText } from '@/components/shared/AnimatedText'
 import type { Project } from '@/lib/projects-data'
 
 interface ProjectCardProps {
@@ -40,14 +41,18 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
       <motion.div
         variants={variants}
         onMouseEnter={preloadImages}
-        className="group relative h-full overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-xl backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-black/20 hover:bg-black/10 hover:shadow-2xl dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10"
+        className="group relative h-full overflow-hidden rounded-2xl border border-black/10 bg-black/5 shadow-lg backdrop-blur-xl transition-all duration-300 hover:-translate-y-1 hover:scale-[1.02] hover:border-black/20 hover:bg-black/10 hover:shadow-xl dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10"
       >
         {/* Gradient top accent */}
         <div className="from-primary via-secondary to-primary h-1 w-full bg-linear-to-r bg-size-[200%_auto] transition-[background-position] duration-300 group-hover:bg-position-[100%_center]" />
 
         <div className="flex h-[calc(100%-4px)] flex-col p-6">
-          <h3 className="mb-2 text-lg font-semibold">{title}</h3>
-          <p className="text-muted-foreground mb-4 grow text-sm leading-relaxed">{description}</p>
+          <h3 className="mb-2 text-lg font-semibold">
+            <AnimatedText index={0}>{title}</AnimatedText>
+          </h3>
+          <p className="text-muted-foreground mb-4 grow text-sm leading-relaxed">
+            <AnimatedText index={1}>{description}</AnimatedText>
+          </p>
 
           <div className="mb-4 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
@@ -88,7 +93,9 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
                   aria-label={`${title} ${t.projectCard.live}`}
                 >
                   <ExternalLink size={16} />
-                  <span className="text-xs">{t.projectCard.live}</span>
+                  <span className="text-xs">
+                    <AnimatedText index={3}>{t.projectCard.live}</AnimatedText>
+                  </span>
                 </a>
               </Button>
             )}
@@ -101,7 +108,9 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
               >
                 <Image size={14} />
                 <span className="text-xs">
-                  {t.projectCard.preview} ({project.previewImages.length})
+                  <AnimatedText index={4}>
+                    {t.projectCard.preview} ({project.previewImages.length})
+                  </AnimatedText>
                 </span>
               </Button>
             )}
