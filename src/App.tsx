@@ -2,6 +2,7 @@ import { Github, Linkedin, Mail } from 'lucide-react'
 import { Navigation } from '@/components/Navigation'
 import { ParallaxBackground } from '@/components/shared/ParallaxBackground'
 import { TechMarquee } from '@/components/shared/TechMarquee'
+import { ThemeTransition } from '@/components/shared/ThemeTransition'
 import { Hero } from '@/components/sections/Hero'
 import { About } from '@/components/sections/About'
 import { Projects } from '@/components/sections/Projects'
@@ -14,6 +15,7 @@ const iconMap = { Github, Mail, Linkedin } as const
 function App() {
   return (
     <>
+      <ThemeTransition />
       <ParallaxBackground />
       <Navigation />
       <main>
