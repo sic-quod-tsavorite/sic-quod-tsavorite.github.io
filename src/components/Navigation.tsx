@@ -56,7 +56,7 @@ export function Navigation() {
                 className="flex items-center overflow-hidden p-1"
                 initial={{ width: 0, marginRight: 0, opacity: 0 }}
                 animate={{ width: 38, marginRight: 12, opacity: 1 }}
-                exit={{ width: 0, marginRight: 0, opacity: 0 }}
+                exit={{ width: 0, marginRight: 0, opacity: 0, padding: 0 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 24 }}
               >
                 <motion.img
