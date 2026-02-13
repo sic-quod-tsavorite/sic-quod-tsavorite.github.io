@@ -27,3 +27,43 @@ export function useTheme() {
 
   return { theme, toggleTheme } as const
 }
+
+// Store for tracking click position and toggle requests
+let lastClickPosition: { x: number; y: number } | null = null
+let toggleRequestCount = 0
+const toggleRequestListeners = new Set<() => void>()
+
+// Store and retrieve click position for theme transition
+export function setThemeClickPosition(position: { x: number; y: number } | null) {
+  lastClickPosition = position
+}
+
+export function getThemeClickPosition(): { x: number; y: number } | null {
+  return lastClickPosition
+}
+
+// Theme toggle request tracking for animation
+function getToggleRequestSnapshot(): number {
+  return toggleRequestCount
+}
+
+function subscribeToggleRequest(callback: () => void): () => void {
+  toggleRequestListeners.add(callback)
+  return () => toggleRequestListeners.delete(callback)
+}
+
+/**
+ * Hook to detect theme toggle requests (button clicks)
+ * Returns a counter that increments when toggle is requested
+ */
+export function useThemeToggleRequest(): number {
+  return useSyncExternalStore(subscribeToggleRequest, getToggleRequestSnapshot, () => 0)
+}
+
+/**
+ * Call this to request a theme toggle (shows animation first)
+ */
+export function requestThemeToggle() {
+  toggleRequestCount += 1
+  toggleRequestListeners.forEach((cb) => cb())
+}
