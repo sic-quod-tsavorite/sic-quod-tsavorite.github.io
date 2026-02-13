@@ -1,11 +1,12 @@
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { Menu, Moon, Sun, X } from 'lucide-react'
 import { useScrollSection } from '@/hooks/useScrollSection'
 import { useActiveSection } from '@/hooks/useActiveSection'
-import { useTheme } from '@/hooks/useTheme'
+import { useTheme, setThemeClickPosition, requestThemeToggle } from '@/hooks/useTheme'
 import { useTranslation } from '@/hooks/useLanguage'
 import { LanguageToggle } from '@/components/shared/LanguageToggle'
+import { AnimatedText } from '@/components/shared/AnimatedText'
 import { cn } from '@/lib/utils'
 import profilePhoto from '@/assets/profile.jpg'
 
@@ -20,13 +21,26 @@ export function Navigation() {
   const [mobileOpen, setMobileOpen] = useState(false)
   const { scrollTo } = useScrollSection()
   const activeSection = useActiveSection()
-  const { theme, toggleTheme } = useTheme()
+  const { theme } = useTheme()
   const t = useTranslation()
+  const themeButtonRef = useRef<HTMLButtonElement>(null)
 
   const handleClick = (href: string) => {
     const id = href.replace('#', '')
     scrollTo(id)
     setMobileOpen(false)
+  }
+
+  const handleThemeToggle = () => {
+    // Get button position for the circle reveal animation
+    if (themeButtonRef.current) {
+      const rect = themeButtonRef.current.getBoundingClientRect()
+      setThemeClickPosition({
+        x: rect.left + rect.width / 2,
+        y: rect.top + rect.height / 2,
+      })
+    }
+    requestThemeToggle()
   }
 
   return (
@@ -39,9 +53,9 @@ export function Navigation() {
           <AnimatePresence>
             {activeSection !== 'hero' && (
               <motion.div
-                className="overflow-hidden"
+                className="flex items-center overflow-hidden p-1"
                 initial={{ width: 0, marginRight: 0, opacity: 0 }}
-                animate={{ width: 32, marginRight: 12, opacity: 1 }}
+                animate={{ width: 38, marginRight: 12, opacity: 1 }}
                 exit={{ width: 0, marginRight: 0, opacity: 0 }}
                 transition={{ type: 'spring', stiffness: 260, damping: 24 }}
               >
@@ -64,7 +78,7 @@ export function Navigation() {
 
         {/* Desktop nav */}
         <ul className="hidden gap-8 md:flex">
-          {NAV_ITEMS.map((item) => {
+          {NAV_ITEMS.map((item, index) => {
             const isActive = activeSection === item.id
             const label = t.nav[item.id as keyof typeof t.nav]
             return (
@@ -76,7 +90,7 @@ export function Navigation() {
                     isActive ? 'text-foreground' : 'text-muted-foreground hover:text-foreground'
                   )}
                 >
-                  {label}
+                  <AnimatedText index={index}>{label}</AnimatedText>
                 </button>
                 {isActive && (
                   <motion.div
@@ -96,7 +110,8 @@ export function Navigation() {
 
           {/* Theme toggle */}
           <button
-            onClick={toggleTheme}
+            ref={themeButtonRef}
+            onClick={handleThemeToggle}
             className="cursor-pointer rounded-lg p-2 transition-colors hover:bg-black/5 dark:hover:bg-white/5"
             aria-label="Toggle theme"
           >
@@ -146,7 +161,7 @@ export function Navigation() {
             transition={{ duration: 0.3 }}
             className="bg-background/95 overflow-hidden border-t border-black/10 backdrop-blur-lg md:hidden dark:border-white/10"
           >
-            {NAV_ITEMS.map((item) => {
+            {NAV_ITEMS.map((item, index) => {
               const isActive = activeSection === item.id
               const label = t.nav[item.id as keyof typeof t.nav]
               return (
@@ -160,7 +175,7 @@ export function Navigation() {
                         : 'text-muted-foreground hover:text-foreground'
                     )}
                   >
-                    {label}
+                    <AnimatedText index={index}>{label}</AnimatedText>
                   </button>
                 </li>
               )
