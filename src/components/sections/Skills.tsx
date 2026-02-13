@@ -3,6 +3,7 @@ import { SectionWrapper } from '@/components/shared/SectionWrapper'
 import { scaleIn } from '@/lib/variants'
 import { GlassCard } from '@/components/shared/GlassCard'
 import { useTranslation } from '@/hooks/useLanguage'
+import { AnimatedText } from '@/components/shared/AnimatedText'
 
 interface SkillCategory {
   key: 'frontend' | 'backendData' | 'devopsInfra' | 'toolsOther'
@@ -65,7 +66,7 @@ export function Skills() {
           <motion.div key={category.key} variants={scaleIn}>
             <GlassCard className="h-full">
               <h3 className="text-primary mb-4 text-sm font-semibold tracking-widest uppercase">
-                {t.skills.categories[category.key]}
+                <AnimatedText index={2}>{t.skills.categories[category.key]}</AnimatedText>
               </h3>
               <motion.ul
                 className="space-y-2"

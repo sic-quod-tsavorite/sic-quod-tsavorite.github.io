@@ -4,6 +4,7 @@ import { ArrowDown } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { useScrollSection } from '@/hooks/useScrollSection'
 import { useTranslation } from '@/hooks/useLanguage'
+import { AnimatedText } from '@/components/shared/AnimatedText'
 import profilePhoto from '@/assets/profile.jpg'
 
 const slideUp = {
@@ -120,15 +121,15 @@ export function Hero() {
           />
         </motion.div>
 
-        <motion.p
+        <motion.div
           custom={1}
           variants={slideUp}
           initial="hidden"
           animate={controls}
           className="text-primary mb-4 text-sm font-medium tracking-widest uppercase"
         >
-          {t.hero.welcome}
-        </motion.p>
+          <AnimatedText index={0}>{t.hero.welcome}</AnimatedText>
+        </motion.div>
 
         <motion.h1
           custom={2}
@@ -137,21 +138,23 @@ export function Hero() {
           animate={controls}
           className="mb-6 text-5xl leading-tight font-bold md:text-7xl"
         >
-          {t.hero.heading}{' '}
+          <AnimatedText index={1} as="span">
+            {t.hero.heading}
+          </AnimatedText>{' '}
           <span className="from-primary to-secondary bg-linear-to-r bg-clip-text text-transparent">
             Martin
           </span>
         </motion.h1>
 
-        <motion.p
+        <motion.div
           custom={3}
           variants={slideUp}
           initial="hidden"
           animate={controls}
           className="text-muted-foreground mx-auto mb-10 max-w-2xl text-lg md:text-xl"
         >
-          {t.hero.tagline}
-        </motion.p>
+          <AnimatedText index={2}>{t.hero.tagline}</AnimatedText>
+        </motion.div>
 
         <motion.div
           custom={4}
@@ -165,7 +168,7 @@ export function Hero() {
             onClick={() => scrollTo('projects')}
             className="from-primary via-secondary to-primary text-primary-foreground hover:shadow-primary/25 cursor-pointer bg-linear-to-r bg-size-[200%_auto] transition-[background-position,box-shadow] duration-300 hover:bg-position-[100%_center] hover:shadow-lg"
           >
-            {t.hero.viewProjects}
+            <AnimatedText index={3}>{t.hero.viewProjects}</AnimatedText>
           </Button>
           <Button
             size="lg"
@@ -173,7 +176,9 @@ export function Hero() {
             asChild
             className="cursor-pointer border-black/20 bg-black/5 backdrop-blur-sm hover:bg-black/10 dark:border-white/20 dark:bg-white/5 dark:hover:bg-white/10"
           >
-            <a href="mailto:tsav.git@pm.me">{t.hero.getInTouch}</a>
+            <a href="mailto:tsav.git@pm.me">
+              <AnimatedText index={4}>{t.hero.getInTouch}</AnimatedText>
+            </a>
           </Button>
         </motion.div>
       </div>

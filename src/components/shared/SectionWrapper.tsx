@@ -2,6 +2,7 @@ import { type ReactNode, useEffect, useRef } from 'react'
 import { motion, useAnimationControls } from 'framer-motion'
 import { cn } from '@/lib/utils'
 import { containerVariants, revealVariants } from '@/lib/variants'
+import { AnimatedText } from './AnimatedText'
 
 interface SectionWrapperProps {
   id: string
@@ -57,10 +58,14 @@ export function SectionWrapper({
           <motion.div variants={revealVariants} className="mb-16">
             <h2 className="mb-4 text-4xl font-bold">
               <span className="from-primary to-secondary bg-linear-to-r bg-clip-text text-transparent">
-                {title}
+                <AnimatedText index={0}>{title}</AnimatedText>
               </span>
             </h2>
-            {subtitle && <p className="text-muted-foreground max-w-2xl text-lg">{subtitle}</p>}
+            {subtitle && (
+              <p className="text-muted-foreground max-w-2xl text-lg">
+                <AnimatedText index={1}>{subtitle}</AnimatedText>
+              </p>
+            )}
           </motion.div>
         )}
         {children}

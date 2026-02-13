@@ -5,6 +5,7 @@ import { scaleIn } from '@/lib/variants'
 import { GlassCard } from '@/components/shared/GlassCard'
 import { SOCIAL_LINKS } from '@/lib/constants'
 import { useTranslation } from '@/hooks/useLanguage'
+import { AnimatedText } from '@/components/shared/AnimatedText'
 
 const iconMap = { Github, Mail, Linkedin } as const
 
@@ -24,7 +25,9 @@ export function Contact() {
               <a href={link.href} target="_blank" rel="noopener noreferrer">
                 <GlassCard className="flex cursor-pointer items-center gap-3 px-6 py-4">
                   <Icon size={20} className="text-primary" />
-                  <span className="text-sm font-medium">{link.label}</span>
+                  <span className="text-sm font-medium">
+                    <AnimatedText index={2}>{link.label}</AnimatedText>
+                  </span>
                 </GlassCard>
               </a>
             </motion.div>
