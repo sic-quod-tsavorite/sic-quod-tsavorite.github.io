@@ -1,11 +1,11 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, type ElementType } from 'react'
 import { useLanguageChange } from '@/hooks/useLanguage'
 
 interface AnimatedTextProps {
   children: React.ReactNode
   index?: number
   className?: string
-  as?: 'span' | 'p' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'button'
+  as?: ElementType
 }
 
 export function AnimatedText({
@@ -59,16 +59,18 @@ export function AnimatedText({
     }
   }, [changeCount, index])
 
-  // On first load (changeCount === 0), render without animation
-  if (changeCount === 0) {
-    const Comp = Component as keyof JSX.IntrinsicElements
-    return <Comp className={className}>{children}</Comp>
+  const handleRef = (el: HTMLElement | null) => {
+    elementRef.current = el
   }
 
-  const Comp = Component as keyof JSX.IntrinsicElements
+  // On first load (changeCount === 0), render without animation
+  if (changeCount === 0) {
+    return <Component className={className}>{children}</Component>
+  }
+
   return (
-    <Comp ref={elementRef as React.RefObject<HTMLElement>} className={className}>
+    <Component ref={handleRef} className={className}>
       {displayText}
-    </Comp>
+    </Component>
   )
 }
