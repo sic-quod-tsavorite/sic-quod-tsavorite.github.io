@@ -80,8 +80,8 @@ export function Projects() {
           </CarouselContent>
 
           {/* Desktop navigation buttons */}
-          <CarouselPrevious className="text-foreground -left-4 hidden border-black/10 bg-black/5 backdrop-blur-xl hover:border-black/20 hover:bg-black/10 md:flex lg:-left-12 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10" />
-          <CarouselNext className="text-foreground -right-4 hidden border-black/10 bg-black/5 backdrop-blur-xl hover:border-black/20 hover:bg-black/10 md:flex lg:-right-12 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10" />
+          <CarouselPrevious className="text-foreground -left-4 hidden border-black/10 bg-black/5 backdrop-blur-xl hover:border-black/20 hover:bg-black/10 md:flex lg:-left-5 xl:-left-12 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10" />
+          <CarouselNext className="text-foreground -right-4 hidden border-black/10 bg-black/5 backdrop-blur-xl hover:border-black/20 hover:bg-black/10 md:flex lg:-right-5 xl:-right-12 dark:border-white/10 dark:bg-white/5 dark:hover:border-white/20 dark:hover:bg-white/10" />
 
           {/* Progress indicator */}
           <CarouselProgress
