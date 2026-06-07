@@ -69,10 +69,10 @@ const en: Translations = {
         description:
           'A cinema booking website built as a school project. Features movie listings and seat selection with a Bootstrap frontend. The live demo is a static Laravel rebuild without the original MySQL backend.',
       },
-      vrdungeon: {
-        title: 'VRDungeon',
+      opendungeonre: {
+        title: 'OpenDungeonRe',
         description:
-          'A VR dungeon crawler built with Unity for a school project. Navigate procedural dungeons and battle monsters using immersive hand-tracking controls.',
+          'Remake of VRDungeon, a school project. The remake is first person controlled instead of being VR. Navigate procedural dungeons and battle monsters.',
       },
       'perfekt-gulvservice': {
         title: 'PERfekt Gulvservice',
@@ -170,10 +170,10 @@ const da: Translations = {
         description:
           'En biograf booking hjemmeside bygget som et skoleprojekt. Indeholder filmoversigt og sædevalg med en Bootstrap frontend. Live demoen er en statisk Laravel rebuild uden den originale MySQL backend.',
       },
-      vrdungeon: {
-        title: 'VRDungeon',
+      opendungeonre: {
+        title: 'OpenDungeonRe',
         description:
-          'Et VR-dungeon crawler spil udviklet med Unity til et skoleprojekt. Naviger gennem dungeons og bekæmp monstre ved hjælp af intuitive håndsporingskontroller.',
+          'Ny version af VRDungeon, et skoleprojekt. Remaken bruger first person kontrol i stedet for VR. Naviger gennem dungeons og bekæmp monstre.',
       },
       'perfekt-gulvservice': {
         title: 'PERfekt Gulvservice',

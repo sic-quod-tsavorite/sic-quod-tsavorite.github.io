@@ -51,9 +51,10 @@ export const projects: Project[] = [
     previewImages: ['/assets/projects/cinema/Screenshot_Cinema.png'],
   },
   {
-    id: 'vrdungeon',
-    tags: ['Unity', 'C#', 'VR', 'Oculus'],
-    github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/VRDungeon' }],
+    id: 'opendungeonre',
+    tags: ['Unity', 'C#'],
+    github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/OpenDungeonRe' }],
+    live: 'https://sic-quod-tsavorite.github.io/OpenDungeonRe/',
     previewImages: [
       '/assets/projects/vrdungeon/VRD1.png',
       '/assets/projects/vrdungeon/VRD2.png',
