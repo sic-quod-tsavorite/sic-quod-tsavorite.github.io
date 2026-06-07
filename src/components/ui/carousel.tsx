@@ -100,11 +100,16 @@ function Carousel({
       return
     }
 
-    onSelect(api)
+    // Defer initial onSelect call to avoid cascading renders
+    const initialSelect = () => onSelect(api)
+    // Use setTimeout to defer the state update
+    const timeoutId = window.setTimeout(initialSelect, 0)
+
     api.on('reInit', onSelect)
     api.on('select', onSelect)
 
     return () => {
+      window.clearTimeout(timeoutId)
       api?.off('select', onSelect)
     }
   }, [api, onSelect])
