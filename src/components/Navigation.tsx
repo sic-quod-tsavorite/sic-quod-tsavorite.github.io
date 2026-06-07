@@ -25,10 +25,19 @@ export function Navigation() {
   const t = useTranslation()
   const themeButtonRef = useRef<HTMLButtonElement>(null)
 
+  // Mobile menu animation duration (in seconds for motion, milliseconds for setTimeout)
+  const MENU_DURATION = 0.3
+
   const handleClick = (href: string) => {
     const id = href.replace('#', '')
-    scrollTo(id)
-    setMobileOpen(false)
+    // Close mobile menu first, then scroll after animation completes
+    if (mobileOpen) {
+      setMobileOpen(false)
+      // Match the exit animation duration
+      setTimeout(() => scrollTo(id), MENU_DURATION * 1000)
+    } else {
+      scrollTo(id)
+    }
   }
 
   const handleThemeToggle = () => {
@@ -47,7 +56,14 @@ export function Navigation() {
     <nav className="bg-background/80 fixed top-0 z-50 w-full border-b border-black/10 backdrop-blur-lg dark:border-white/10">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <button
-          onClick={() => scrollTo('hero')}
+          onClick={() => {
+            if (mobileOpen) {
+              setMobileOpen(false)
+              setTimeout(() => scrollTo('hero'), MENU_DURATION * 1000)
+            } else {
+              scrollTo('hero')
+            }
+          }}
           className="group/logo flex cursor-pointer items-center text-lg font-bold tracking-tight"
         >
           <AnimatePresence>
@@ -158,7 +174,7 @@ export function Navigation() {
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: 'auto', opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            transition={{ duration: MENU_DURATION }}
             className="bg-background/95 overflow-hidden border-t border-black/10 backdrop-blur-lg md:hidden dark:border-white/10"
           >
             {NAV_ITEMS.map((item, index) => {
