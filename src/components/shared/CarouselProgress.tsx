@@ -53,7 +53,7 @@ export function CarouselProgress({ api, className, visibleSlides = 3 }: Carousel
 
   return (
     <div className={className}>
-      <div className="flex items-center justify-center gap-1.5">
+      <div className="scrollbar-hide flex snap-x snap-mandatory items-center justify-center gap-1.5 overflow-x-auto md:snap-none md:overflow-visible">
         {Array.from({ length: totalSlides }).map((_, index) => {
           const active = isVisible(index)
 
@@ -62,7 +62,7 @@ export function CarouselProgress({ api, className, visibleSlides = 3 }: Carousel
               key={index}
               type="button"
               onClick={() => api?.scrollTo(index)}
-              className="group relative h-1.5 w-6 cursor-pointer rounded-full"
+              className="group no-touch-size relative h-1.5 w-6 flex-shrink-0 cursor-pointer snap-start rounded-full"
               aria-label={`Go to slide ${index + 1}`}
             >
               {/* Inactive background */}

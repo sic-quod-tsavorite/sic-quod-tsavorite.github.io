@@ -195,13 +195,24 @@
     }
   }
 
-  /* Touch-friendly tap targets on mobile */
+  /* Touch-friendly tap targets on mobile - exclude small controls */
   @media (pointer: coarse) {
-    button,
-    a,
-    [role='button'] {
+    button:not(.no-touch-size),
+    a:not(.no-touch-size),
+    [role='button']:not(.no-touch-size) {
       min-height: 44px;
       min-width: 44px;
     }
+  }
+}
+
+@layer utilities {
+  /* Hide scrollbar but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
