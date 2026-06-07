@@ -93,6 +93,9 @@
   --input: oklch(0 0 0 / 12%);
   --ring: oklch(0.55 0.17 155);
 
+  /* Custom link color for official company sites */
+  --color-official-link: oklch(0.45 0.28 290);
+
   /* Chart colors */
   --chart-1: oklch(0.55 0.17 155);
   --chart-2: oklch(0.45 0.28 290);
@@ -162,6 +165,9 @@
   --sidebar-accent-foreground: oklch(0.97 0.01 155);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.82 0.17 155);
+
+  /* Custom link color for official company sites */
+  --color-official-link: oklch(0.7845 0.0952 195.39);
 }
 
 @layer base {

@@ -7,6 +7,7 @@ const en: Translations = {
     frontend: 'Frontend',
     live: 'Live',
     preview: 'Preview',
+    production: 'Production',
   },
   nav: {
     about: 'About',
@@ -109,6 +110,7 @@ const da: Translations = {
     frontend: 'Frontend',
     live: 'Live',
     preview: 'Billedvisning',
+    production: 'Produktion',
   },
   nav: {
     about: 'Om Mig',

@@ -9,6 +9,7 @@ export interface Project {
   github?: GithubLink[]
   live?: string
   previewImages?: string[]
+  production?: boolean
 }
 
 export const projects: Project[] = [
@@ -23,6 +24,7 @@ export const projects: Project[] = [
       '/assets/projects/ship3d/Screenshot_ship3d_sample1.png',
       '/assets/projects/ship3d/Screenshot_ship3d_sample2.png',
     ],
+    production: true,
   },
   {
     id: 'bryghjaelperen',
@@ -70,11 +72,13 @@ export const projects: Project[] = [
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/PERfekt-Gulvservice' }],
     live: 'https://perfektgulvservice.dk/',
     previewImages: ['/assets/projects/perfekt-gulvservice/Screenshot PERfektGulvservice.png'],
+    production: true,
   },
   {
     id: 'heartflow',
     tags: ['WordPress', 'PHP', 'CSS', 'JavaScript'],
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/heartflow-theme' }],
     previewImages: ['/assets/projects/heartflow/Screenshot Heartflow.png'],
+    production: true,
   },
 ]

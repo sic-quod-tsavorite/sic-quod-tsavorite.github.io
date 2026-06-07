@@ -1,8 +1,7 @@
 import { useCallback, useRef, useState } from 'react'
 import { type Variants, motion } from 'framer-motion'
-import { ExternalLink, Github, Image } from 'lucide-react'
+import { ExternalLink, Github, Image, Building, Globe } from 'lucide-react'
 import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
 import { ImageLightbox } from '@/components/shared/ImageLightbox'
 import { useTranslation } from '@/hooks/useLanguage'
 import { AnimatedText } from '@/components/shared/AnimatedText'
@@ -36,6 +35,15 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
     })
   }, [project.previewImages])
 
+  const isGitHubPagesUrl = (url: string): boolean => {
+    try {
+      const urlObj = new URL(url)
+      return urlObj.hostname === 'sic-quod-tsavorite.github.io'
+    } catch {
+      return false
+    }
+  }
+
   return (
     <>
       <motion.div
@@ -47,9 +55,20 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
         <div className="from-primary via-secondary to-primary h-1 w-full bg-linear-to-r bg-size-[200%_auto] transition-[background-position] duration-300 group-hover:bg-position-[100%_center]" />
 
         <div className="flex h-[calc(100%-4px)] flex-col p-6">
-          <h3 className="mb-2 text-lg font-semibold">
-            <AnimatedText index={0}>{title}</AnimatedText>
-          </h3>
+          <div className="mb-2 flex items-center gap-2">
+            <h3 className="text-lg font-semibold">
+              <AnimatedText index={0}>{title}</AnimatedText>
+            </h3>
+            {project.production && (
+              <Badge
+                variant="outline"
+                className="text-primary border-primary/20 bg-primary/5 text-xs font-medium"
+              >
+                <Building className="mr-0.5 h-2.5 w-2.5" />
+                {t.projectCard.production}
+              </Badge>
+            )}
+          </div>
           <p className="text-muted-foreground mb-4 grow text-sm leading-relaxed">
             <AnimatedText index={1}>{description}</AnimatedText>
           </p>
@@ -71,48 +90,60 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
               const translatedLabel =
                 t.projectCard[labelKeyMap[link.label] as keyof typeof t.projectCard] ?? link.label
               return (
-                <Button key={link.label} variant="ghost" size="xs" asChild>
-                  <a
-                    href={link.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={`${title} ${translatedLabel}`}
+                <a
+                  key={link.label}
+                  href={link.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${title} ${translatedLabel}`}
+                  className="transition-opacity hover:opacity-80"
+                >
+                  <Badge
+                    variant="outline"
+                    className="text-foreground border-black/10 bg-black/5 text-xs font-medium dark:border-white/10 dark:bg-white/5"
                   >
-                    <Github size={16} />
-                    <span className="text-xs">{translatedLabel}</span>
-                  </a>
-                </Button>
+                    <Github size={14} className="mr-0.5" />
+                    {translatedLabel}
+                  </Badge>
+                </a>
               )
             })}
             {project.live && (
-              <Button variant="ghost" size="xs" asChild>
-                <a
-                  href={project.live}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label={`${title} ${t.projectCard.live}`}
+              <a
+                href={project.live}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${title} ${t.projectCard.live}`}
+                className="transition-opacity hover:opacity-80"
+              >
+                <Badge
+                  variant="outline"
+                  className={`text-xs font-medium ${
+                    isGitHubPagesUrl(project.live)
+                      ? 'text-foreground border-black/10 bg-black/5 dark:border-white/10 dark:bg-white/5'
+                      : 'border-[var(--color-official-link)]/20 bg-[var(--color-official-link)]/5 text-[var(--color-official-link)]'
+                  }`}
                 >
-                  <ExternalLink size={16} />
-                  <span className="text-xs">
-                    <AnimatedText index={3}>{t.projectCard.live}</AnimatedText>
-                  </span>
-                </a>
-              </Button>
+                  {isGitHubPagesUrl(project.live) ? (
+                    <ExternalLink size={14} className="mr-0.5" />
+                  ) : (
+                    <Globe size={14} className="mr-0.5" />
+                  )}
+                  <AnimatedText index={3}>{t.projectCard.live}</AnimatedText>
+                </Badge>
+              </a>
             )}
             {project.previewImages && project.previewImages.length > 0 && (
-              <Button
-                variant="ghost"
-                size="xs"
+              <Badge
+                variant="outline"
+                className="text-muted-foreground hover:text-foreground ml-auto cursor-pointer gap-1.5 border-black/10 bg-black/5 px-2 text-xs font-medium dark:border-white/10 dark:bg-white/5"
                 onClick={() => setLightboxOpen(true)}
-                className="text-muted-foreground hover:text-foreground ml-auto cursor-pointer gap-1.5 px-2"
               >
                 <Image size={14} />
-                <span className="text-xs">
-                  <AnimatedText index={4}>
-                    {t.projectCard.preview} ({project.previewImages.length})
-                  </AnimatedText>
-                </span>
-              </Button>
+                <AnimatedText index={4}>
+                  {t.projectCard.preview} ({project.previewImages.length})
+                </AnimatedText>
+              </Badge>
             )}
           </div>
         </div>
