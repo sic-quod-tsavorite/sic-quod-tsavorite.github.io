@@ -53,7 +53,7 @@ const en: Translations = {
       ship3d: {
         title: '3D Maritime Web Application',
         description:
-          'Full-stack web app for browsing and managing maritime vessels with interactive 3D visualization. Vue 3 frontend with Three.js rendering, Express REST API with JWT auth and 3D model upload validation.',
+          'Full-stack web app for browsing and managing maritime vessels with interactive 3D visualization, developed while I was in internship for Moove. Vue 3 frontend with Three.js rendering, Express REST API with JWT auth and 3D model upload validation.',
       },
       bryghjaelperen: {
         title: 'Bryg Hjælperen',
@@ -165,7 +165,7 @@ const da: Translations = {
       ship3d: {
         title: '3D Maritim Webapplikation',
         description:
-          'Full-stack webapplikation til at browse og administrere maritime fartøjer med interaktiv 3D visualisering. Vue 3 frontend med Three.js rendering, Express REST API med JWT auth og 3D model upload validering.',
+          'Full-stack webapplikation til at browse og administrere maritime fartøjer med interaktiv 3D visualisering, udviklet mens jeg var i praktik hos Moove. Vue 3 frontend med Three.js rendering, Express REST API med JWT auth og 3D model upload validering.',
       },
       bryghjaelperen: {
         title: 'Bryg Hjælperen',

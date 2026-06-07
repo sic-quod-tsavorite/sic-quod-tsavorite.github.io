@@ -39,18 +39,6 @@ export const projects: Project[] = [
     ],
   },
   {
-    id: 'portfolio',
-    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
-    github: [
-      { label: 'Code', href: 'https://github.com/sic-quod-tsavorite/sic-quod-tsavorite.github.io' },
-    ],
-  },
-  {
-    id: 'cinema',
-    tags: ['Laravel', 'Bootstrap', 'PHP', 'MySQL'],
-    github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/project-cinema' }],
-    live: 'https://sic-quod-tsavorite.github.io/project-cinema/',
-    previewImages: ['/assets/projects/cinema/Screenshot_Cinema.png'],
     id: 'gammelhavn',
     tags: ['WordPress', 'CSS', 'JavaScript'],
     live: 'https://gammelhavn.dk/',
@@ -79,6 +67,13 @@ export const projects: Project[] = [
     production: true,
   },
   {
+    id: 'cinema',
+    tags: ['Laravel', 'Bootstrap', 'PHP', 'MySQL'],
+    github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/project-cinema' }],
+    live: 'https://sic-quod-tsavorite.github.io/project-cinema/',
+    previewImages: ['/assets/projects/cinema/Screenshot_Cinema.png'],
+  },
+  {
     id: 'perfekt-gulvservice',
     tags: ['WordPress', 'PHP', 'CSS', 'JavaScript'],
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/PERfekt-Gulvservice' }],
@@ -92,5 +87,12 @@ export const projects: Project[] = [
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/heartflow-theme' }],
     previewImages: ['/assets/projects/heartflow/Screenshot Heartflow.png'],
     production: true,
+  },
+  {
+    id: 'portfolio',
+    tags: ['React', 'TypeScript', 'Tailwind CSS', 'Framer Motion'],
+    github: [
+      { label: 'Code', href: 'https://github.com/sic-quod-tsavorite/sic-quod-tsavorite.github.io' },
+    ],
   },
 ]
