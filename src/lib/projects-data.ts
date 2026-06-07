@@ -51,6 +51,11 @@ export const projects: Project[] = [
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/project-cinema' }],
     live: 'https://sic-quod-tsavorite.github.io/project-cinema/',
     previewImages: ['/assets/projects/cinema/Screenshot_Cinema.png'],
+    id: 'gammelhavn',
+    tags: ['WordPress', 'CSS', 'JavaScript'],
+    live: 'https://gammelhavn.dk/',
+    previewImages: ['/assets/projects/gammelhavn/gammelhavn.png'],
+    production: true,
   },
   {
     id: 'opendungeonre',
@@ -65,6 +70,13 @@ export const projects: Project[] = [
       '/assets/projects/vrdungeon/VRD5.png',
       '/assets/projects/vrdungeon/VRD6.png',
     ],
+  },
+  {
+    id: 'babytummel',
+    tags: ['WordPress', 'CSS', 'JavaScript'],
+    live: 'https://babytummel.dk/',
+    previewImages: ['/assets/projects/babytummel/babytummel.png'],
+    production: true,
   },
   {
     id: 'perfekt-gulvservice',

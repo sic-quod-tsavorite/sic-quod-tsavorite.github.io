@@ -85,6 +85,16 @@ const en: Translations = {
         description:
           'A WordPress theme for a non-profit heart health association. Features event listings, member resources, and donation integration.',
       },
+      gammelhavn: {
+        title: 'Huset Gammelhavn',
+        description:
+          'WordPress website for Huset Gammelhavn developed while working at Moove Advertising. Built to allow the customer to make smaller changes like updating text and content.',
+      },
+      babytummel: {
+        title: 'BabyTummel',
+        description:
+          'WordPress website for BabyTummel developed while working at Moove Advertising. Built to allow the customer to make smaller changes like updating text and content.',
+      },
     },
   },
   skills: {
@@ -186,6 +196,16 @@ const da: Translations = {
         title: 'Heartflow Foreningen',
         description:
           'Et WordPress tema til en nonprofit hjertehelbredsforening. Indeholder eventlister, medlemsressourcer og donationsintegration.',
+      },
+      gammelhavn: {
+        title: 'Huset Gammelhavn',
+        description:
+          'WordPress hjemmeside for Huset Gammelhavn udviklet mens jeg arbejdede hos Moove Advertising. Bygget så kunden kan foretage mindre ændringer som at opdatere tekst og indhold.',
+      },
+      babytummel: {
+        title: 'BabyTummel',
+        description:
+          'WordPress hjemmeside for BabyTummel udviklet mens jeg arbejdede hos Moove Advertising. Bygget så kunden kan foretage mindre ændringer som at opdatere tekst og indhold.',
       },
     },
   },
