@@ -134,23 +134,23 @@ export function Navigation() {
             <AnimatePresence mode="wait" initial={false}>
               {theme === 'dark' ? (
                 <motion.div
-                  key="sun"
+                  key="moon"
                   initial={{ rotate: -90, scale: 0 }}
                   animate={{ rotate: 0, scale: 1 }}
                   exit={{ rotate: 90, scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Sun size={20} />
+                  <Moon size={20} />
                 </motion.div>
               ) : (
                 <motion.div
-                  key="moon"
+                  key="sun"
                   initial={{ rotate: 90, scale: 0 }}
                   animate={{ rotate: 0, scale: 1 }}
                   exit={{ rotate: -90, scale: 0 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <Moon size={20} />
+                  <Sun size={20} />
                 </motion.div>
               )}
             </AnimatePresence>
