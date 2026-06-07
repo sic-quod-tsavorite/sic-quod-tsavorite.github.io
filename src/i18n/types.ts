@@ -12,6 +12,7 @@ export interface Translations {
     frontend: string
     live: string
     preview: string
+    production: string
   }
   nav: {
     about: string
