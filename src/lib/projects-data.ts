@@ -49,7 +49,7 @@ export const projects: Project[] = [
     id: 'opendungeonre',
     tags: ['Unity', 'C#'],
     github: [{ label: 'Code', href: 'https://github.com/sic-quod-tsavorite/OpenDungeonRe' }],
-    live: 'https://sic-quod-tsavorite.github.io/OpenDungeonRe/',
+    live: 'https://tsavolite.itch.io/opendungeonre/',
     previewImages: [
       '/assets/projects/vrdungeon/VRD1.png',
       '/assets/projects/vrdungeon/VRD2.png',
