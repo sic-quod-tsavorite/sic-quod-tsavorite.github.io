@@ -8,7 +8,9 @@ export interface Project {
   tags: string[]
   github?: GithubLink[]
   live?: string
+  liveLabel?: string
   previewImages?: string[]
+  previewLabel?: string
   production?: boolean
 }
 
@@ -18,12 +20,15 @@ export const projects: Project[] = [
     tags: ['Vue', 'TypeScript', 'Three.js', 'Express', 'MongoDB'],
     github: [
       { label: 'API', href: 'https://github.com/sic-quod-tsavorite/api-ship-3d' },
-      { label: 'Frontend', href: 'https://github.com/sic-quod-tsavorite/ship-3d-site' },
+      { label: 'Front', href: 'https://github.com/sic-quod-tsavorite/ship-3d-site' },
     ],
+    live: 'https://sic-quod-tsavorite.github.io/ship-3d-site/',
+    liveLabel: 'Demo',
     previewImages: [
       '/assets/projects/ship3d/Screenshot_ship3d_sample1.png',
       '/assets/projects/ship3d/Screenshot_ship3d_sample2.png',
     ],
+    previewLabel: '',
     production: true,
   },
   {

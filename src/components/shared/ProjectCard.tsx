@@ -113,8 +113,8 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${title} ${t.projectCard.live}`}
                 className="transition-opacity hover:opacity-80"
+                aria-label={`${title} ${project.liveLabel ?? t.projectCard.live}`}
               >
                 <Badge
                   variant="outline"
@@ -129,7 +129,7 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
                   ) : (
                     <Globe size={14} className="mr-0.5" />
                   )}
-                  <AnimatedText index={3}>{t.projectCard.live}</AnimatedText>
+                  <AnimatedText index={3}>{project.liveLabel ?? t.projectCard.live}</AnimatedText>
                 </Badge>
               </a>
             )}
@@ -141,7 +141,7 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
               >
                 <Image size={14} />
                 <AnimatedText index={4}>
-                  {t.projectCard.preview} ({project.previewImages.length})
+                  {project.previewLabel ?? t.projectCard.preview} ({project.previewImages.length})
                 </AnimatedText>
               </Badge>
             )}
