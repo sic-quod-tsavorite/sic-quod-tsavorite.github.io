@@ -96,7 +96,7 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={`${title} ${translatedLabel}`}
-                  className="transition-opacity hover:opacity-80"
+                  className="no-touch-size transition-opacity hover:opacity-80"
                 >
                   <Badge
                     variant="outline"
@@ -113,8 +113,8 @@ export function ProjectCard({ project, title, description, variants }: ProjectCa
                 href={project.live}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="transition-opacity hover:opacity-80"
                 aria-label={`${title} ${project.liveLabel ?? t.projectCard.live}`}
+                className="no-touch-size transition-opacity hover:opacity-80"
               >
                 <Badge
                   variant="outline"
